@@ -141,8 +141,12 @@ public class SpecChecker {
     }
 
     public boolean checkPokemon(PixelmonEntity pixelmon) {
-        if(bossCheck && !pixelmon.isBossPokemon() &&
-                !bosses.contains(SpecParser.specFormatter(pixelmon.getBossTier().getName()))) return false;
+        if(bossCheck) {
+            if(!pixelmon.isBossPokemon()) return false;
+            if(!bosses.contains("ANY")) {
+                if(!bosses.contains(SpecParser.specFormatter(pixelmon.getBossTier().getName()))) return false;
+            }
+        }
         return checkPokemon(pixelmon.getPokemon());
     }
 
