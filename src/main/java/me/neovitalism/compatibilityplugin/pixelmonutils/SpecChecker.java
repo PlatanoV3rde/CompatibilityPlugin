@@ -64,7 +64,7 @@ public class SpecChecker {
                 bosses.add(toParse.replace("BOSS=", ""));
             } else if(toParse.contains("PARENT")) {
                 parent = true;
-            } else if(toParse.contains("FORM:")) {
+            } else if(toParse.contains("FORM=")) {
                 if(!formCheck) {
                     formCheck = true;
                     forms = new ArrayList<>();
@@ -155,7 +155,7 @@ public class SpecChecker {
         if(hiddenAbilityCheck && !pokemon.hasHiddenAbility()) return false;
         if(legendaryCheck && !pokemon.getSpecies().isLegendary()) return false;
         if(mythicalCheck && !pokemon.getSpecies().isMythical()) return false;
-        if(natureCheck && !natures.contains(pokemon.getNature().name())) return false;
+        if(natureCheck && !natures.contains(SpecParser.specFormatter(pokemon.getNature().name()))) return false;
         if(paletteCheck && !palettes.contains(SpecParser.specFormatter(pokemon.getPalette().getName()))) return false;
         if(pkrsCheck && pokemon.getPokerus().type.equals(PokerusStrain.UNINFECTED)) return false;
         if(pokemonCheck && !pokemonList.contains(SpecParser.specFormatter(pokemon.getSpecies().getName()))) return false;

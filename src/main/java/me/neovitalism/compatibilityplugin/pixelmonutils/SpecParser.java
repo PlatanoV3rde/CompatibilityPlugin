@@ -4,10 +4,7 @@ import com.pixelmonmod.pixelmon.api.pokemon.Element;
 import com.pixelmonmod.pixelmon.api.pokemon.species.gender.Gender;
 import com.pixelmonmod.pixelmon.battles.status.StatusType;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class SpecParser {
     private static final Map<String, Element> elements = new HashMap<>();
@@ -15,7 +12,7 @@ public class SpecParser {
     private static final Map<String, StatusType> statuses = new HashMap<>();
 
     public static String specFormatter(String spec) {
-        return spec.replaceAll(" ", "").toUpperCase();
+        return spec.replaceAll(" ", "").toUpperCase(Locale.ENGLISH);
     }
 
     public static Collection<Element> elementParser(String element) {
