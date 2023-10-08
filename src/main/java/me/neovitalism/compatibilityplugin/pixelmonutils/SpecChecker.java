@@ -34,6 +34,9 @@ public class SpecChecker {
     private boolean unbreedableCheck = false;
     private boolean uncatchableCheck = false;
     private boolean untradableCheck = false;
+    private boolean wildCheck = false;
+
+    private boolean isWild;
 
     private List<String> abilities;
     private List<String> bosses;
@@ -136,6 +139,9 @@ public class SpecChecker {
                 uncatchableCheck = true;
             } else if(toParse.contains("UNTRADEABLE")) {
                 untradableCheck = true;
+            } else if(toParse.contains("WILD=")) {
+                wildCheck = true;
+                isWild = toParse.replace("WILD=", "").equals("TRUE");
             }
         }
     }
@@ -178,9 +184,16 @@ public class SpecChecker {
             if(!hasType) return false;
         }
         if(ultraBeastCheck && !pokemon.isUltraBeast()) return false;
-        if(unbreedableCheck && !pokemon.isUnbreedable()) return false;
+        if(unbreedableCheck && !pokemon.isUnbreedable()) return  false;
         if(uncatchableCheck && !pokemon.isUncatchable()) return false;
-        return !(untradableCheck && !pokemon.isUntradeable());
+        if(untradableCheck && !pokemon.isUntradeable()) return false;
+        if(wildCheck) {
+            if(isWild) {
+                return pokemon.getOwnerPlayerUUID() == null && pokemon.getOwnerTrainerUUID() == null;
+            } else {
+                return pokemon.getOwnerPlayerUUID() != null;
+            }
+        } else return true;
     }
 
     public boolean otCheckRequired() {
