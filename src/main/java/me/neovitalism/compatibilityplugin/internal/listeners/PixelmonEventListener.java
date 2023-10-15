@@ -6,7 +6,10 @@ import com.pixelmonmod.pixelmon.api.events.*;
 import me.neovitalism.compatibilityplugin.CompatibilityPlugin;
 import me.neovitalism.compatibilityplugin.internal.events.PixelmonEvent;
 import me.neovitalism.compatibilityplugin.utils.HybridUtils;
+import me.neovitalism.neoextras.NeoExtras;
+import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import org.bukkit.Bukkit;
 
 public class PixelmonEventListener {
     public PixelmonEventListener() {
@@ -19,46 +22,50 @@ public class PixelmonEventListener {
 
     @SubscribeEvent
     public void onBreed(DayCareEvent.PostCollect event) {
-        CompatibilityPlugin.pm.callEvent(new PixelmonEvent(event));
+        this.fireEvent(event);
     }
 
     @SubscribeEvent
     public void onCatch(CaptureEvent.SuccessfulCapture event) {
-        CompatibilityPlugin.pm.callEvent(new PixelmonEvent(event));
+        this.fireEvent(event);
     }
 
     @SubscribeEvent
     public void onEvolve(EvolveEvent event) {
-        CompatibilityPlugin.pm.callEvent(new PixelmonEvent(event));
+        this.fireEvent(event);
     }
 
     @SubscribeEvent
     public void onHatch(EggHatchEvent.Post event) {
-        CompatibilityPlugin.pm.callEvent(new PixelmonEvent(event));
+        this.fireEvent(event);
     }
 
     @SubscribeEvent
     public void onDefeat(BeatWildPixelmonEvent event) {
-        CompatibilityPlugin.pm.callEvent(new PixelmonEvent(event));
+        this.fireEvent(event);
     }
 
     @SubscribeEvent
     public void onLevel(LevelUpEvent.Post event) {
-        CompatibilityPlugin.pm.callEvent(new PixelmonEvent(event));
+        this.fireEvent(event);
     }
 
     @SubscribeEvent
     public void onApricornPick(ApricornEvent.Pick event) {
-        CompatibilityPlugin.pm.callEvent(new PixelmonEvent(event));
+        this.fireEvent(event);
     }
 
     @SubscribeEvent
     public void onPictureTaken(CameraEvent.TakePhoto event) {
-        CompatibilityPlugin.pm.callEvent(new PixelmonEvent(event));
+        this.fireEvent(event);
     }
 
     @SubscribeEvent
     public void onTrainerDefeat(BeatTrainerEvent event) {
-        CompatibilityPlugin.pm.callEvent(new PixelmonEvent(event));
+        this.fireEvent(event);
+    }
+
+    public void fireEvent(Event event) {
+        Bukkit.getScheduler().runTask(NeoExtras.inst(), () -> CompatibilityPlugin.pm.callEvent(new PixelmonEvent(event)));
     }
 }
