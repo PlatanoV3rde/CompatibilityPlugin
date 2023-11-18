@@ -2,6 +2,8 @@ package me.neovitalism.compatibilityplugin.pixelmonutils;
 
 import com.pixelmonmod.pixelmon.enums.items.ApricornType;
 
+import java.util.Locale;
+
 public class ApricornChecker {
     private boolean red;
     private boolean yellow;
@@ -14,7 +16,7 @@ public class ApricornChecker {
     public ApricornChecker(String in) {
         String[] instructions = in.split(",");
         for(String part : instructions) {
-            String toParse = part.toUpperCase();
+            String toParse = part.toUpperCase(Locale.ENGLISH);
             switch (toParse) {
                 case "ANY":
                     red = true;

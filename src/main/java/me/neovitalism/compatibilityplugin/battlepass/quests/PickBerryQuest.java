@@ -15,7 +15,7 @@ public class PickBerryQuest extends PixelmonQuestContainer {
     public void onBerryPick(BerryPickEvent event) {
         Player player = event.getPlayer();
         if(player != null) {
-            this.executionBuilder("pick-apricorn")
+            this.executionBuilder("pick-berry")
                     .player(player)
                     .root(event.getBerry())
                     .progressSingle()

@@ -4,6 +4,7 @@ import com.pixelmonmod.pixelmon.enums.BerryType;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class BerryChecker {
     private final List<BerryType> berries = new ArrayList<>();
@@ -11,7 +12,7 @@ public class BerryChecker {
     public BerryChecker(String in) {
         String[] instructions = in.split(",");
         for(String part : instructions) {
-            String toParse = part.toUpperCase();
+            String toParse = part.toUpperCase(Locale.ENGLISH);
             if(toParse.equals("ANY")) {
                 berries.addAll(List.of(BerryType.values()));
             } else {

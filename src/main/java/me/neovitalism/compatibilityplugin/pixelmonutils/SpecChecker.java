@@ -9,6 +9,7 @@ import com.pixelmonmod.pixelmon.entities.pixelmon.PixelmonEntity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
 
 public class SpecChecker {
@@ -52,7 +53,7 @@ public class SpecChecker {
     public SpecChecker(String in) {
         String[] instructions = in.split(",");
         for(String part : instructions) {
-            String toParse = part.toUpperCase();
+            String toParse = part.toUpperCase(Locale.ENGLISH);
             if(toParse.contains("AB=")) {
                 if(!abilityCheck) {
                     abilityCheck = true;
@@ -101,7 +102,7 @@ public class SpecChecker {
                 if(toParse.contains("TRUE")) {
                     otCheck = true;
                 } else if(toParse.contains("FALSE")) {
-                    notOTCheck = false;
+                    notOTCheck = true;
                 }
             } else if(toParse.contains("PALETTE=")) {
                 if(!paletteCheck) {
@@ -201,8 +202,8 @@ public class SpecChecker {
     }
 
     public boolean otChecker(UUID pokemonOT, UUID ot) {
-        if(otCheck) return (pokemonOT.equals(ot));
-        if(notOTCheck) return !(pokemonOT.equals(ot));
+        if(otCheck) return (ot.equals(pokemonOT));
+        if(notOTCheck) return !(ot.equals(pokemonOT));
         return false;
     }
 
