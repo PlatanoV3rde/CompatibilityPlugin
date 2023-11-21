@@ -6,7 +6,6 @@ import com.pixelmonmod.pixelmon.api.events.*;
 import me.neovitalism.compatibilityplugin.CompatibilityPlugin;
 import me.neovitalism.compatibilityplugin.internal.events.PixelmonEvent;
 import me.neovitalism.compatibilityplugin.utils.HybridUtils;
-import me.neovitalism.neoextras.NeoExtras;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.bukkit.Bukkit;
@@ -66,6 +65,6 @@ public class PixelmonEventListener {
     }
 
     public void fireEvent(Event event) {
-        Bukkit.getScheduler().runTask(NeoExtras.inst(), () -> CompatibilityPlugin.pm.callEvent(new PixelmonEvent(event)));
+        Bukkit.getScheduler().runTask(CompatibilityPlugin.inst(), () -> CompatibilityPlugin.pm.callEvent(new PixelmonEvent(event)));
     }
 }
