@@ -125,7 +125,9 @@ public class SpecChecker {
                     statusCheck = true;
                     statuses = new ArrayList<>();
                 }
-                statuses.add(SpecParser.statusParser(toParse.replace("STATUS=", "")));
+                StatusType status = SpecParser.statusParser(toParse.replace("STATUS=", ""));
+                statuses.add(status);
+                if(status == StatusType.Poison) statuses.add(StatusType.PoisonBadly);
             } else if(toParse.contains("TYPE=")) {
                 if(!typeCheck) {
                     typeCheck = true;
@@ -168,7 +170,7 @@ public class SpecChecker {
         if(mythicalCheck && !pokemon.getSpecies().isMythical()) return false;
         if(natureCheck && !natures.contains(SpecParser.specFormatter(pokemon.getNature().name()))) return false;
         if(paletteCheck && !palettes.contains(SpecParser.specFormatter(pokemon.getPalette().getName()))) return false;
-        if(pkrsCheck && pokemon.getPokerus().type.equals(PokerusStrain.UNINFECTED)) return false;
+        if(pkrsCheck && (pokemon.getPokerus() == null || pokemon.getPokerus().type.equals(PokerusStrain.UNINFECTED))) return false;
         if(pokemonCheck && !pokemonList.contains(SpecParser.specFormatter(pokemon.getSpecies().getName()))) return false;
         if(shinyCheck && !pokemon.getPalette().getName().contains("shiny")) return false;
         if(statusCheck && !statuses.contains(pokemon.getStatus().type)) return false;

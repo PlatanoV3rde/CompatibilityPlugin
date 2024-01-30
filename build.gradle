@@ -22,7 +22,7 @@ minecraft {
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
-version = '1.16-1.0.5'
+version = '1.16-1.0.6'
 group = 'me.neovitalism.compatibilityplugin'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(11)
@@ -64,6 +64,7 @@ dependencies {
     compileOnly files('libs/BattlePass-4.0.9.jar')
     compileOnly files('libs/ClueScrolls-4.8.7.jar')
     compileOnly files('libs/NeoExtras-2.0.0-BETA-12.jar')
+    compileOnly files('libs/OldSchoolBreeding-1.16-1.0.0.jar')
 
     compileOnly 'org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT'
 }

@@ -20,15 +20,15 @@ public class CompatibilityPlugin extends JavaPlugin {
     public void onEnable() {
         instance = this;
         HybridUtils.checkPlatform(this);
+        if(pm.getPlugin("OldSchoolBreeding") != null) {
+            BattlePassHook.markHasOSB();
+            ChatUtils.sendPrettyMessage(Bukkit.getConsoleSender(), "&aOldSchoolBreeding support enabled!");
+        }
         if(pm.getPlugin("BattlePass") != null) {
             BattlePassHook.register();
             pm.registerEvents(new BattlePassReloadListener(), this);
             ChatUtils.sendPrettyMessage(Bukkit.getConsoleSender(), "&aBattlePass support enabled!");
         }
-//        if(pm.getPlugin("ClueScrolls") != null) {
-//            ClueScrollsHook.register();
-//            ChatUtils.sendPrettyMessage(Bukkit.getConsoleSender(), "&aClueScrolls support enabled!");
-//        }
         TrainerChecker.checkExtras(pm.getPlugin("NeoExtras") != null);
         pixelmonEventListener = new PixelmonEventListener();
         pm.registerEvents(new BerryPickListener(), this);

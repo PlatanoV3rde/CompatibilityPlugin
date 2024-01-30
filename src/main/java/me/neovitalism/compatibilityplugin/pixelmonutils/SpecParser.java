@@ -17,15 +17,15 @@ public class SpecParser {
 
     public static Collection<Element> elementParser(String element) {
         if(element.equals("ANY")) return elements.values();
-        return Collections.singletonList(elements.getOrDefault(element.toUpperCase(), Element.MYSTERY));
+        return Collections.singletonList(elements.getOrDefault(element.toUpperCase(Locale.ENGLISH), Element.MYSTERY));
     }
 
     public static Gender genderParser(String gender) {
-        return genders.getOrDefault(gender.toUpperCase(), Gender.NONE);
+        return genders.getOrDefault(gender.toUpperCase(Locale.ENGLISH), Gender.NONE);
     }
 
     public static StatusType statusParser(String status) {
-        return statuses.getOrDefault(status.toUpperCase(), StatusType.None);
+        return statuses.getOrDefault(status.toUpperCase(Locale.ENGLISH), StatusType.None);
     }
 
     static {

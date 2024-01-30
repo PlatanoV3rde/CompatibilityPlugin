@@ -5,6 +5,12 @@ import me.neovitalism.compatibilityplugin.battlepass.quests.*;
 import net.advancedplugins.bp.impl.actions.ActionRegistry;
 
 public class BattlePassHook {
+    private static boolean hasOSB = false;
+
+    public static void markHasOSB() {
+        hasOSB = true;
+    }
+
     public static void register() {
         ActionRegistry actionRegistry = BattlePlugin.getApi().getActionRegistry();
         actionRegistry.quest(BreedPokemonQuest::new);
@@ -18,5 +24,6 @@ public class BattlePassHook {
         actionRegistry.quest(PickBerryQuest::new);
         actionRegistry.quest(TakePictureQuest::new);
         actionRegistry.quest(DefeatTrainerQuest::new);
+        if(hasOSB) actionRegistry.quest(OSBBreedPokemonQuest::new);
     }
 }
