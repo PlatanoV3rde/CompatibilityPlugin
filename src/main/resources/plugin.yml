@@ -1,5 +1,5 @@
 name: CompatibilityPlugin
-version: 1.0.6
+version: 1.0.7
 author: Neovitalism
 main: me.neovitalism.compatibilityplugin.CompatibilityPlugin
 description: A plugin that brings Pixelmon Compatibility to other plugins.

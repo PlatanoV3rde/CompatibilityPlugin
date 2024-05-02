@@ -40,7 +40,7 @@ public class PixelmonEventListener {
     }
 
     @SubscribeEvent
-    public void onDefeat(BeatWildPixelmonEvent event) {
+    public void onDefeat(PixelmonKnockoutEvent event) {
         this.fireEvent(event);
     }
 
