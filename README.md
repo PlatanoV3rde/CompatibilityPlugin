@@ -1,9 +1,9 @@
-# CompatibilityPlugin
+# <p align="center">CompatibilityPlugin</p>
 
-CompatibilityPlugin is a hybrid plugin that brings Pixelmon Compatibility to a BattlePass plugin.  
-More info can be found on the wiki page: https://github.com/Neovitalism/CompatibilityPlugin/wiki
+<p align="center">CompatibilityPlugin is a hybrid plugin that brings Pixelmon Compatibility to a BattlePass plugin.</p>
+<p align="center">More info can be found on the wiki page: https://github.com/Neovitalism/CompatibilityPlugin/wiki</p>
 
-This project is now "abandoned". Small bug-fixes will still occur if needed, but take no priority.  
-If you do encounter an issue, open an issue on this repository.  
+<p align="center">This project is now "abandoned". Small bug-fixes will still occur if needed, but take no priority.</p> 
+<p align="center">If you do encounter an issue, open an issue on this repository.</p>
 
-### If you want to use this plugin, you must build the jar yourself.
+### <p align="center">If you want to use this plugin, you must build the jar yourself.</p>
