@@ -1,4 +1,5 @@
-name: Java CI
+# .github/workflows/main.yml
+name: Java CI with Gradle 4.4.1
 
 on:
   push:
@@ -11,23 +12,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1) Chequea tu repo
+      # 1) Chequea tu código
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2) Instala Java (ajusta la versión si necesitas otra)
+      # 2) Instala Java (ajusta la versión a la que necesites)
       - name: Set up JDK 11
         uses: actions/setup-java@v3
         with:
           distribution: temurin
           java-version: '11'
 
-      # 3) Instala Gradle (por si no tienes wrapper en el repo)
-      - name: Install Gradle
+      # 3) Descarga e instala Gradle 4.4.1 manualmente
+      - name: Download and install Gradle 4.4.1
         run: |
-          sudo apt-get update
-          sudo apt-get install -y gradle
+          wget https://services.gradle.org/distributions/gradle-4.4.1-bin.zip -P /tmp
+          sudo unzip -d /opt/gradle /tmp/gradle-4.4.1-bin.zip
+          echo "/opt/gradle/gradle-4.4.1/bin" >> $GITHUB_PATH
 
-      # 4) Ejecuta la compilación
-      - name: Build with Gradle
+      # 4) Comprueba la versión de Gradle
+      - name: Verify Gradle version
+        run: gradle --version
+
+      # 5) Ejecuta la compilación con Gradle 4.4.1
+      - name: Build with Gradle 4.4.1
         run: gradle build
